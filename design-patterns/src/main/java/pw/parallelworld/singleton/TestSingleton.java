@@ -11,7 +11,7 @@ public class TestSingleton {
         testForClass(InnerClassSingleton.class);    // 内部类来保证线程安全，方式跟饿汉方式差不多。不过也是资源懒加载型。
         testForClass(SafeLanHanSingleton1.class);   // 方法加synchronized关键字
         testForClass(SafeLanHanSingleton2.class);   // 方法体内加synchronized关键字
-        testForClass(SafeLanHanSingleton3.class);   // 双重检查，这个跟2的区别是最外层提前判断是否为null，提高了效率。特别注意，此处的volatile的关键字
+        testForClass(DCLSingleton.class);   // 双重检查，这个跟2的区别是最外层提前判断是否为null，提高了效率。特别注意，此处的volatile的关键字
         testForClass(SafeLanHanSingleton4.class);   // ThreadLocal
     }
 
