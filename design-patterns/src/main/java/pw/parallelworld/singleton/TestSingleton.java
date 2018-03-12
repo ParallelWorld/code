@@ -4,10 +4,10 @@ public class TestSingleton {
 
     public static void main(String[] args) {
         // 线程不安全
-        testForClass(LanHanSingleton.class);        // 懒加载
+        testForClass(LazySingleton.class);        // 懒加载
 
         // 线程安全
-        testForClass(EhanSingleton.class);          // 类加载时就加载
+        testForClass(HangerSingleton.class);          // 类加载时就加载
         testForClass(InnerClassSingleton.class);    // 内部类来保证线程安全，方式跟饿汉方式差不多。不过也是资源懒加载型。
         testForClass(SafeLanHanSingleton1.class);   // 方法加synchronized关键字
         testForClass(SafeLanHanSingleton2.class);   // 方法体内加synchronized关键字

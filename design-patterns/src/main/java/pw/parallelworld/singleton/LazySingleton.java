@@ -1,15 +1,15 @@
 package pw.parallelworld.singleton;
 
-public class LanHanSingleton {
-    private static LanHanSingleton singleton;
+public class LazySingleton {
+    private static LazySingleton singleton;
 
-    private LanHanSingleton() {
+    private LazySingleton() {
 
     }
 
     public static Object getSingleton() {
         if (singleton == null) {
-            singleton = new LanHanSingleton();
+            singleton = new LazySingleton();
         }
         return singleton;
     }
