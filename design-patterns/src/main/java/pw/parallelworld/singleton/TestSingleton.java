@@ -1,18 +1,33 @@
 package pw.parallelworld.singleton;
 
+import java.lang.reflect.Constructor;
+
 public class TestSingleton {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
+
+        try {
+            Class c = Class.forName("pw.parallelworld.singleton.DCLSingleton");
+            Constructor c0 = c.getDeclaredConstructor();
+            c0.setAccessible(true);
+            Object o = c0.newInstance();
+            System.out.println(o);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         // 线程不安全
-        testForClass(LazySingleton.class);        // 懒加载
+        testForClass(LazySingleton.class);          // 懒加载
 
         // 线程安全
-        testForClass(HangerSingleton.class);          // 类加载时就加载
+        testForClass(HangerSingleton.class);        // 类加载时就加载
         testForClass(InnerClassSingleton.class);    // 内部类来保证线程安全，方式跟饿汉方式差不多。不过也是资源懒加载型。
         testForClass(SafeLanHanSingleton1.class);   // 方法加synchronized关键字
         testForClass(SafeLanHanSingleton2.class);   // 方法体内加synchronized关键字
-        testForClass(DCLSingleton.class);   // 双重检查，这个跟2的区别是最外层提前判断是否为null，提高了效率。特别注意，此处的volatile的关键字
+        testForClass(DCLSingleton.class);           // 双重检查，这个跟2的区别是最外层提前判断是否为null，提高了效率。特别注意，此处的volatile的关键字
         testForClass(SafeLanHanSingleton4.class);   // ThreadLocal
+        testForClass(EnumSingleton.class);          // 枚举类型
     }
 
     private static void testForClass(Class cls) {
