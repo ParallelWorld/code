@@ -1,21 +1,8 @@
 package pw.parallelworld.singleton;
 
-import java.lang.reflect.Constructor;
-
 public class TestSingleton {
 
-    public static void main(String[] args)  {
-
-        try {
-            Class c = Class.forName("pw.parallelworld.singleton.DCLSingleton");
-            Constructor c0 = c.getDeclaredConstructor();
-            c0.setAccessible(true);
-            Object o = c0.newInstance();
-            System.out.println(o);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    public static void main(String[] args) {
 
         // 线程不安全
         testForClass(LazySingleton.class);          // 懒加载
@@ -28,6 +15,10 @@ public class TestSingleton {
         testForClass(DCLSingleton.class);           // 双重检查，这个跟2的区别是最外层提前判断是否为null，提高了效率。特别注意，此处的volatile的关键字
         testForClass(SafeLanHanSingleton4.class);   // ThreadLocal
         testForClass(EnumSingleton.class);          // 枚举类型
+
+        // result
+        // LazySingleton有一个code跟其他9个不一致，说明创建了多个对象
+        // 其他线程安全的实现得到的是10个hashcode一致的结果
     }
 
     private static void testForClass(Class cls) {

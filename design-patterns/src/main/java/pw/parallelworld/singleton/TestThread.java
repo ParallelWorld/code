@@ -1,7 +1,6 @@
 package pw.parallelworld.singleton;
 
 import java.lang.reflect.Method;
-import java.util.Set;
 
 public class TestThread extends Thread {
     private Class cls = null;
