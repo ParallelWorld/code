@@ -9,7 +9,7 @@ import java.security.ProtectionDomain;
 import java.text.MessageFormat;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class PWTransformer implements ClassFileTransformer {
+public class Transformer implements ClassFileTransformer {
 
     private static ClassPool classPool = ClassPool.getDefault();
     private static AtomicBoolean hasAddPropsClassPath = new AtomicBoolean();
@@ -32,9 +32,9 @@ public class PWTransformer implements ClassFileTransformer {
                     if (ctMethods != null && ctMethods.length > 0) {
                         for (CtMethod ctMethod : ctMethods) {
                             if (!ctMethod.isEmpty() && !Modifier.isAbstract(ctMethod.getModifiers()) && !Modifier.isNative(ctMethod.getModifiers())) {
-                                ctMethod.insertBefore(MessageFormat.format("pw.parallelworld.agent.PWInject.before(\"{0}\", \"{1}\", $args);", ctClass.getName(), ctMethod.getName()));
+                                ctMethod.insertBefore(MessageFormat.format("pw.parallelworld.agent.Inject.before(\"{0}\", \"{1}\", $args);", ctClass.getName(), ctMethod.getName()));
 //								ctMethod.addCatch(MessageFormat.format("com.xiao1zhao2.myjavaagent.MyInject.exception(\"{0}\", \"{1}\", $e); throw $e;", ctClass.getName(), ctMethod.getName()), e);
-                                ctMethod.insertAfter(MessageFormat.format("pw.parallelworld.agent.PWInject.after(\"{0}\", \"{1}\", $args);", ctClass.getName(), ctMethod.getName()), true);
+                                ctMethod.insertAfter(MessageFormat.format("pw.parallelworld.agent.Inject.after(\"{0}\", \"{1}\", $args);", ctClass.getName(), ctMethod.getName()), true);
                             }
                         }
                     }

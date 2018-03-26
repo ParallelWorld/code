@@ -53,7 +53,7 @@
                         </manifest>
                         <manifestEntries>
                             <Premain-Class>
-                                pw.parallelworld.agent.PWAgent
+                                pw.parallelworld.agent.Agent
                             </Premain-Class>
                         </manifestEntries>
                     </archive>

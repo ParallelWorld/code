@@ -6,7 +6,7 @@ import java.text.MessageFormat;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class PWInject {
+public class Inject {
 
     private static final Logger logger = Logger.getLogger("agentlog");
 
