@@ -1,8 +1,9 @@
 public class SuperSub {
     public static void main(String[] args) {
         Sub s = new Sub();
+        System.out.println("=====我是分割线=====");
+        Sub s1 = new Sub();
         /**
-         * 输出
          * 加载Super的静态块
          * 加载Super的静态变量
          * 加载Sub的静态变量
@@ -13,10 +14,18 @@ public class SuperSub {
          * 加载Sub的实例变量
          * 加载Sub的普通块
          * 加载Sub的构造器
+         * =====我是分割线=====
+         * 加载Super的普通块
+         * 加载Super的实例变量
+         * 加载Super的构造器
+         * 加载Sub的实例变量
+         * 加载Sub的普通块
+         * 加载Sub的构造器
          */
 
         /**
          * 结论
+         * static只加载一次，以下是加载顺序
          * 1 加载super的静态块、静态变量，是按照代码出现顺序执行的。
          * 2 加载sub的静态块、静态变量，是按照代码出现顺序执行的。
          * 3 加载super的普通块、实例变量，是按照代码出现顺序执行的。
